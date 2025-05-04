@@ -36,6 +36,8 @@ async function cargarUsuarios() {
   }
 
   console.log(usuarios);
+  console.log("Hola a todos");
+  
 
   document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
 
