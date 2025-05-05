@@ -1,6 +1,9 @@
 
 
 
+
+
+######################################################################################################################
 Configura tu usuario y correo en tu PC con:
 
 
@@ -17,7 +20,7 @@ Y ahora sí deberías ver líneas como:
 user.name=Tu Nombre
 user.email=tu-correo@ejemplo.com
 
-
+######################################################################################################################
 
 
 2. Usa un repositorio remoto (como GitHub)
@@ -46,6 +49,8 @@ Si aún no tienes el proyecto en la PC, clónalo con:
 git clone https://github.com/tu-usuario/tu-repo.git
 
 
+######################################################################################################################
+
 
 3. Mantén este ciclo para trabajar alternadamente
 Cuando vayas a cambiar de computadora:
@@ -63,8 +68,6 @@ Puedes usar llaves SSH para autenticarte automáticamente desde ambas máquinas 
 
 
 
-
-
 Luego, si tu repositorio ya está en GitLab y quieres actualizar también el nombre de la rama en el remoto:
 
 git push -u origin main
@@ -76,3 +79,60 @@ Elimina la rama master en el remoto (opcional pero recomendable):
 
 
 git push origin --delete master
+
+
+
+######################################################################################################################
+
+
+
+Si no funciona todavía, fuerza la recarga del proyecto
+Presiona Ctrl + Shift + P y ejecuta:
+
+"Java: Clean Java Language Server Workspace"
+
+Luego reinicia VS Code
+¿Qué hacer si vuelve a ocurrir?
+Ya sabes cómo solucionarlo. Pero para prevenirlo:
+
+Siempre abre el proyecto desde la carpeta raíz.
+
+Asegúrate de que tienes bien configurado Java y Maven.
+
+Si clonas un proyecto, espera unos segundos tras abrirlo.
+
+Si notas que algo no responde bien, el comando Java: Clean Java Language Server Workspace es tu amigo.
+
+
+######################################################################################################################
+
+
+ Opción 1: Usar code desde la terminal (más rápida y sin extensiones)
+Exportar extensiones:
+Abre una terminal en el equipo original.
+
+Ejecuta:
+
+code --list-extensions > extensions.txt
+Esto genera un archivo extensions.txt con la lista de tus extensiones.
+
+
+Importar extensiones:
+Copia el archivo extensions.txt al nuevo equipo.
+
+En el nuevo equipo, ejecuta:
+
+cat extensions.txt | xargs -L 1 code --install-extension
+
+
+
+
+
+######################################################################################################################
+
+
+
+
+
+
+

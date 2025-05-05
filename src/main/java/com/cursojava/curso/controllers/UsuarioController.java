@@ -10,21 +10,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 // import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cursojava.curso.dao.UsuarioDao;
 import com.cursojava.curso.models.Usuario;
 
-import ch.qos.logback.core.joran.spi.HttpUtil.RequestMethod;
+
 
 
 @RestController
 public class UsuarioController {
 
-    @Autowired
-    private UsuarioDao usuarioDao;
+    @Autowired      //automaticamente hace que la clase cree un objeto y la guarda en la variable
+    private UsuarioDao usuarioDao;  //inyeccion de dependencias
 
-    @RequestMapping(value = "api/usuarios/{id}")
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.GET)
     public Usuario getUsuario(@PathVariable Long id){
 
 
@@ -73,7 +74,8 @@ public class UsuarioController {
     }
 
 
-    @DeleteMapping("api/usuarios/{id}")
+    @RequestMapping(value = "api/usuarios/{id}", method = RequestMethod.DELETE)
+    // @DeleteMapping("api/usuarios/{id}")
     public void eliminarUsuario(@PathVariable Long id){
 
         usuarioDao.eliminarUsuario(id);

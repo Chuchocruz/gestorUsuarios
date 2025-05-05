@@ -47,7 +47,12 @@ async function cargarUsuarios() {
   
 }
 
-async function eliminarUsuario(id) {
+async function eliminarUsuario(id) {  //asyn es el tipo
+
+  if (!confirm('¿Desea eliminar este usuario?')) {
+    return;
+
+  }
 
   const request = await fetch('api/usuarios/' + id,{
 
@@ -58,6 +63,8 @@ async function eliminarUsuario(id) {
     },
 
 });
+
+location.reload();
 
 
 }
