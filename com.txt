@@ -1,0 +1,75 @@
+
+
+
+Configura tu usuario y correo en tu PC con:
+
+
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-correo@ejemplo.com"
+Verifica después con:
+
+
+git config --list
+
+Y ahora sí deberías ver líneas como:
+
+
+user.name=Tu Nombre
+user.email=tu-correo@ejemplo.com
+
+
+
+
+2. Usa un repositorio remoto (como GitHub)
+Supongamos que ya tienes tu repositorio en GitHub y en tu laptop estás trabajando. Entonces:
+
+En la laptop:
+Haz tus cambios.
+
+Guarda y sube tus cambios al repositorio remoto:
+
+git add .
+git commit -m "Cambios desde la laptop"
+git push origin main
+
+
+En la PC de escritorio:
+Abre una terminal donde trabajas con Git.
+
+Si ya tienes el proyecto clonado, simplemente actualízalo:
+
+
+git pull origin main
+Si aún no tienes el proyecto en la PC, clónalo con:
+
+
+git clone https://github.com/tu-usuario/tu-repo.git
+
+
+
+3. Mantén este ciclo para trabajar alternadamente
+Cuando vayas a cambiar de computadora:
+
+Antes de comenzar, haz git pull para tener los últimos cambios.
+
+Cuando termines, haz git push para subir tus cambios.
+
+Consejos para evitar conflictos
+Siempre asegúrate de hacer git pull antes de comenzar a trabajar.
+
+Nunca trabajes en ambas máquinas al mismo tiempo si no estás sincronizando frecuentemente (evitarás conflictos de fusión).
+
+Puedes usar llaves SSH para autenticarte automáticamente desde ambas máquinas (opcional, pero conveniente).
+
+
+Luego, si tu repositorio ya está en GitLab y quieres actualizar también el nombre de la rama en el remoto:
+
+git push -u origin main
+
+
+
+
+Elimina la rama master en el remoto (opcional pero recomendable):
+
+
+git push origin --delete master
