@@ -130,6 +130,104 @@ cat extensions.txt | xargs -L 1 code --install-extension
 
 ######################################################################################################################
 
+---  
+### Comandos Básicos de Ramas:  
+- **Crear y cambiar a una rama nueva:**  
+  ```bash
+  git checkout -b nombre-rama
+  ```
+- **Listar ramas:**  
+  ```bash
+  git branch
+  ```
+- **Fusionar una rama con `main`:**  
+  ```bash
+  git checkout main
+  git merge nombre-rama
+  ```
+- **Eliminar una rama (local):**  
+  ```bash
+  git branch -d nombre-rama
+  ```
+
+### Buenas Prácticas:  
+✔ Usar nombres descriptivos (ej: `add-payment-method`).  
+✔ Sincronizar ramas con el repositorio remoto (`git push origin nombre-rama`).  
+✔ Eliminar ramas obsoletas para mantener el repositorio limpio.  
+
+**Resumen:** Las ramas son como "líneas de tiempo alternativas" que permiten organizar el desarrollo de software de manera ordenada y colaborativa.
+
+
+
+######################################################################################################################
+
+
+
+¡Buena idea! Crear ramas para cada dispositivo te ayudará a evitar conflictos al sincronizar cambios entre ellos. Aquí te explico cómo hacerlo:
+
+---
+
+### **Solución: Crear una rama por dispositivo**
+#### 1. **Crea las ramas desde `main` (desde cada dispositivo)**  
+   - **Dispositivo 1** (ej: tu laptop):  
+     ```bash
+     git checkout main          # Asegúrate de estar en main
+     git pull origin main      # Sincroniza los últimos cambios
+     git checkout -b laptop    # Crea y cambia a la rama "laptop"
+     git push -u origin laptop # Sube la rama al repositorio remoto
+     ```
+   - **Dispositivo 2** (ej: tu PC de escritorio):  
+     ```bash
+     git checkout main
+     git pull origin main
+     git checkout -b desktop   # Crea y cambia a la rama "desktop"
+     git push -u origin desktop
+     ```
+
+#### 2. **Flujo de trabajo recomendado**  
+   - **Trabaja siempre en tu rama del dispositivo**:  
+     ```bash
+     git checkout laptop   # En la laptop
+     git checkout desktop # En la PC
+     ```
+   - **Sincroniza cambios con el remoto antes de empezar**:  
+     ```bash
+     git pull origin nombre-de-tu-rama
+     ```
+   - **Sube tus cambios al finalizar**:  
+     ```bash
+     git add .
+     git commit -m "Descripción de los cambios"
+     git push origin nombre-de-tu-rama
+     ```
+
+#### 3. **Fusionar cambios en `main` cuando estén listos**  
+   Cuando quieras integrar los cambios de una rama a `main`:  
+   ```bash
+   git checkout main
+   git merge laptop   # Fusiona los cambios de "laptop" en main
+   git push origin main
+   ```
+   Repite el proceso para `desktop` cuando sea necesario.
+
+---
+
+### **Recomendaciones adicionales**  
+- **Evita trabajar directamente en `main`**: Así previenes conflictos entre dispositivos.  
+- **Sincroniza frecuentemente**: Haz `git pull` antes de empezar a trabajar para evitar desfases.  
+- **Nombres claros**: Puedes usar nombres más descriptivos como `laptop-juan` o `pc-casa` si hay más colaboradores.  
+
+---
+
+### **Diagrama del flujo propuesto**  
+```
+main (estable)
+├── laptop    (trabajo desde tu portátil)
+└── desktop   (trabajo desde tu PC)
+```
+
+Con este enfoque, cada dispositivo tendrá su propio espacio de trabajo sin interferir con el otro. ¡Espero que te ayude!
+
 
 
 
