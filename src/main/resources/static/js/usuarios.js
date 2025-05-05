@@ -36,11 +36,7 @@ async function cargarUsuarios() {
   }
 
   console.log(usuarios);
-  console.log("Hola a todos");
-  console.log("Holka amigoasdfasfd");
-  console.log("Tercera prueba");
-  console.log("Otra prueba final");
-  console.log("Denuevo yo");
+
   
   
   

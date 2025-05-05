@@ -62,6 +62,9 @@ Nunca trabajes en ambas máquinas al mismo tiempo si no estás sincronizando fre
 Puedes usar llaves SSH para autenticarte automáticamente desde ambas máquinas (opcional, pero conveniente).
 
 
+
+
+
 Luego, si tu repositorio ya está en GitLab y quieres actualizar también el nombre de la rama en el remoto:
 
 git push -u origin main
