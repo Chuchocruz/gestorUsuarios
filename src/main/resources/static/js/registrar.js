@@ -11,6 +11,22 @@ $(document).ready(function() {    //Decir que se ejecute todo el codigo una vez 
   
   
   async function registrarUsuario() {
+
+    let datos = {};
+    datos.nombre = document.getElementById('txtNombre').value;
+    datos.apellido = document.getElementById('txtApellido').value;
+    datos.email = document.getElementById('txtEmail').value;
+    datos.password = document.getElementById('txtPassword').value;
+
+
+    let repPass = document.getElementById('txtRepetirpass').value;
+
+    if (repPass != datos.password) {
+        alert('La contraseña es diferente¡¡¡¡¡');
+
+        return
+        
+    }
   
     const request = await fetch('api/usuarios',{
   
@@ -19,20 +35,21 @@ $(document).ready(function() {    //Decir que se ejecute todo el codigo una vez 
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      body: JSON.stringify(datos)
   
   });
-    // const usuarios = await request.json();
+    const usuarios = await request.json();
   
-    let listadoHtml = '';
-  
-    
+    // let listadoHtml = '';
   
     
+  
+    
     
     
     
   
-    document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
+    // document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
   
     
   }
