@@ -42,13 +42,7 @@ $(document).ready(function() {    //Decir que se ejecute todo el codigo una vez 
   
     // let listadoHtml = '';
   
-    
-  
-    
-    
-    
-    
-  
+
     // document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
   
     
