@@ -1,36 +1,42 @@
 // Call the dataTables jQuery plugin
-$(document).ready(function() {    //Decir que se ejecute todo el codigo una vez que se alla cargado la pagina
+$(document).ready(function () {    //Decir que se ejecute todo el codigo una vez que se alla cargado la pagina
 
 
   cargarUsuarios();
   $('#usuarios').DataTable();
+
+  actualizaEmailUser();
 });
 
+function actualizaEmailUser() {
+  document.getElementById('txt-email-usuario').outerHTML = localStorage.email;
+}
 
 async function cargarUsuarios() {
 
-  const request = await fetch('api/usuarios',{
+  const request = await fetch('api/usuarios', {
 
     method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
+    headers: getHeader()
+    // {
+    //   'Accept': 'application/json',
+    //   'Content-Type': 'application/json'
+    // },
 
-});
+  });
   const usuarios = await request.json();
 
   let listadoHtml = '';
 
-  
-  
-  for (let usuario of usuarios){
-    let botonEliminar = '<a href="#" onclick="eliminarUsuario('+ usuario.id +')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
-    
-    
+
+
+  for (let usuario of usuarios) {
+    let botonEliminar = '<a href="#" onclick="eliminarUsuario(' + usuario.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
+
+
     let telefonoTexto = usuario.telefono == null ? '-' : usuario.telefono; //opeador ternario
-    
-    let usuarioHTML = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre+' '+usuario.apellido+'</td><td>'+usuario.email+'</td><td>'+telefonoTexto+'</td><td> '+botonEliminar+' </td></tr>';
+
+    let usuarioHTML = '<tr><td>' + usuario.id + '</td><td>' + usuario.nombre + ' ' + usuario.apellido + '</td><td>' + usuario.email + '</td><td>' + telefonoTexto + '</td><td> ' + botonEliminar + ' </td></tr>';
 
     listadoHtml += usuarioHTML;
 
@@ -39,15 +45,30 @@ async function cargarUsuarios() {
 
   console.log(usuarios);
 
-  
-  
-  
-  
+
+
+
+
 
   document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
 
-  
+
 }
+
+
+function getHeader() {
+  
+  return {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.token 
+  }
+}
+
+
+
+
+
 
 async function eliminarUsuario(id) {  //asyn es el tipo
 
@@ -56,17 +77,19 @@ async function eliminarUsuario(id) {  //asyn es el tipo
 
   }
 
-  const request = await fetch('api/usuarios/' + id,{
+  const request = await fetch('api/usuarios/' + id, {
 
     method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
+    headers: getHeader()
+    // {
+    //   'Accept': 'application/json',
+    //   'Content-Type': 'application/json',
+    //   'Authorization': localStorage.token
+    // },
 
-});
+  });
 
-location.reload();
+  location.reload();
 
 
 }

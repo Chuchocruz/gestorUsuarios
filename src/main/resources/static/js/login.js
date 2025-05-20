@@ -28,7 +28,16 @@ $(document).ready(function() {    //Decir que se ejecute todo el codigo una vez 
       body: JSON.stringify(datos)
   
   });
-    const response = await request.json();
+    const response = await request.text();
+
+    if (response != 'FAIL') {
+      localStorage.token = response;
+      localStorage.email = datos.email;
+      window.location.href = 'usuarios.html'
+
+    }else{
+      alert("Las credenciales son incorrectas, intente de nuevo");
+    }
   
 
   }

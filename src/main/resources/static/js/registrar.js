@@ -38,14 +38,11 @@ $(document).ready(function() {    //Decir que se ejecute todo el codigo una vez 
       body: JSON.stringify(datos)
   
   });
-    const usuarios = await request.json();
-  
-    // let listadoHtml = '';
+    alert("La cuenta fue creada con exito"); 
+  window.location.href = 'login.html'
+
   
 
-    // document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
-  
-    
   }
   
  
